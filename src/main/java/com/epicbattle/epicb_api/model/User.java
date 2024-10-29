@@ -7,6 +7,7 @@ import java.util.List;
 
 
 @Entity //Esta clase es una entidad en la base de datos
+@Table(name = "users") //Cambia el nombre de la tabla a users, porque user es una palabra reservada en H2
 public class User {
 
     @Id //Clave primaria
