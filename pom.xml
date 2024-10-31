@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version> <!-- Cambia esta versión según lo que necesites -->
+			<version>8.0.33</version> <!--Maven version -->
 
 			<scope>runtime</scope>
 		</dependency>
