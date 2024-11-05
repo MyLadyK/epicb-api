@@ -1,14 +1,13 @@
 package com.epicbattle.epicb_api.controller;
 
+import com.epicbattle.epicb_api.exception.GlobalExceptionHandler;
 import com.epicbattle.epicb_api.repository.CharacterRepository;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import com.epicbattle.epicb_api.model.Character;
 
-import java.awt.print.Pageable;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping ("/api/characters")
@@ -26,22 +25,26 @@ public class CharacterCrontoller {
 
     // Implementar paginación, lo que solicita resultados en "páginas" y no todos a la vez.
     @GetMapping
-    public Page<Character> getAllCharacters(Pageable pageable){
+    public Page<Character> getAllCharacters(Pageable pageable) {
         return characterRepository.findAll(pageable);
     }
+
 
     @PostMapping
     public Character createCharacter (@RequestBody Character character){
         return characterRepository.save(character);
     }
 
-    public Character getCharacterById(int idCharacter){
-        return characterRepository.findById(idCharacter)
-                .orElseThrow(() -> new ConfigDataResourceNotFoundException("Personaje no encontrado"));
+    @GetMapping("/{id}")
+    public Character getCharacterById(@PathVariable int id) {
+        return characterRepository.findById(id)
+                .orElseThrow(() -> new GlobalExceptionHandler.ResourceNotFoundException("Personaje no encontrado"));
     }
 
-    public Character updateCharacter (int idCharacter, Character characterDetails){
-        Character character = getCharacterById(idCharacter);
+    @PutMapping("/{id}")
+    public Character updateCharacter(@PathVariable int id, @RequestBody Character characterDetails) {
+        Character character = characterRepository.findById(id)
+                .orElseThrow(() -> new GlobalExceptionHandler.ResourceNotFoundException("Personaje no encontrado"));
 
         character.setNameCharacter(characterDetails.getNameCharacter());
         character.setCategoryCharacter(characterDetails.getCategoryCharacter());
@@ -58,7 +61,8 @@ public class CharacterCrontoller {
         return characterRepository.save(character);
     }
 
-    public void deleteCharacter (int idCharacter){
+    @DeleteMapping("/{idCharacter}")
+    public void deleteCharacter(@PathVariable int idCharacter) {
         Character character = getCharacterById(idCharacter);
         characterRepository.delete(character);
     }
