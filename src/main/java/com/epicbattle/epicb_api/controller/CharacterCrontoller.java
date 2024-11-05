@@ -3,6 +3,7 @@ package com.epicbattle.epicb_api.controller;
 import com.epicbattle.epicb_api.exception.GlobalExceptionHandler;
 import com.epicbattle.epicb_api.repository.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.epicbattle.epicb_api.model.Character;
 
@@ -61,9 +62,11 @@ public class CharacterCrontoller {
         return characterRepository.save(character);
     }
 
-    @DeleteMapping("/{idCharacter}")
-    public void deleteCharacter(@PathVariable int idCharacter) {
+    @DeleteMapping("/{idCharacter}")    //La URL acepta peticiones delete capturando idCharacter desde la ruta
+    public ResponseEntity<String> deleteCharacter(@PathVariable int idCharacter) {  // ResponseEntity<String> para devolver el mensaje de personaje eliminado
         Character character = getCharacterById(idCharacter);
         characterRepository.delete(character);
+        return ResponseEntity.ok("Personaje eliminado");
     }
+
 }
