@@ -1,8 +1,15 @@
 package com.epicbattle.epicb_api.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+
+@Data // G&S, toString, equals y hashCode
+@NoArgsConstructor // Constructor vacío
+@AllArgsConstructor // Constructor completo
 public class Message {
 
     @Id
@@ -15,7 +22,7 @@ public class Message {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Getters y Setters
+
 }
 
 
