@@ -8,24 +8,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Entity
 
 @Data // G&S, toString, equals y hashCode
 @NoArgsConstructor // Constructor vacío
 @AllArgsConstructor // Constructor completo
-public class BattleResult {
+
+public class SurprisePackage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int idBattleResult;
-    private User user1;
-    private User user2;
-    private User winner;
-    private Date battleDate;
-
-
+    private int idSurprisePackage;
+    private String description;
+    private String modificationType;
+    private int modificationValue;
 
 }

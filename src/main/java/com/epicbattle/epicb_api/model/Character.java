@@ -21,14 +21,14 @@ public class Character {
     private int idCharacter;
 
     @NotNull(message = "El nombre no puede ser null")
-    @Size(min = 1, max = 50, message = "El nombre debe tener entre 1 y 50 caracteres")
+    @Size(min = 1, max = 80, message = "El nombre debe tener entre 1 y 80 caracteres")
     private String nameCharacter;
 
-    @Size(min = 1, max = 50, message = "La categoría debe tener entre 1 y 50 caracteres")
+    @Size(min = 1, max = 80, message = "La categoría debe tener entre 1 y 80 caracteres")
     private String categoryCharacter;
 
-    @Size(min = 1, max = 50, message = "El universo al que pertenece debe tener entre 1 y 50 caracteres")
-    private String universCharacter;
+    @Size(min = 1, max = 100, message = "El universo al que pertenece debe tener entre 1 y 100 caracteres")
+    private String universeCharacter;
 
     @NotNull(message = "La salud no puede ser null")
     @Min(value = 1, message = "La salud mínima es 1")

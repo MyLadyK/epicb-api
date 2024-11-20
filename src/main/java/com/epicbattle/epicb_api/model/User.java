@@ -1,6 +1,8 @@
 package com.epicbattle.epicb_api.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,11 +23,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Genera ID automáticamente.
 
     private int idUser;
+
+    @NotNull(message = "El nombre no puede estar en blanco")
+    @Size(min = 1, max = 50, message = "El nombre debe tener entre 1 y 50 caracteres")
     private String nameUser;
+
+    @NotNull(message = "El correo no puede estar en blanco")
+    @Size(min = 1, max = 100, message = "El correo debe tener entre 1 y 100 caracteres")
     private String mailUser;
+
+    @NotNull(message = "La contraseña no puede estar en blanco")
+    @Size(min = 8, max = 20, message = "La contraseña debe tener entre 8 y 20 caracteres")
     private String passwordHash;
+
     private int energy;
     private Timestamp lastEnergyRefill;
+    private int pointsUser;
 
     @OneToMany // Relación de uno a muchos con UserCharacter
     private List <UserCharacter> character;

@@ -31,18 +31,14 @@ public class CharacterService {
         return characterRepository.findAll(pageable);
     }
 
-
-
     public com.epicbattle.epicb_api.model.Character createCharacter (@RequestBody com.epicbattle.epicb_api.model.Character character){
         return characterRepository.save(character);
     }
-
 
     public com.epicbattle.epicb_api.model.Character getCharacterById(@PathVariable int id) {
         return characterRepository.findById(id)
                 .orElseThrow(() -> new GlobalExceptionHandler.ResourceNotFoundException("Personaje no encontrado"));
     }
-
 
     public com.epicbattle.epicb_api.model.Character updateCharacter(@PathVariable int id, @RequestBody com.epicbattle.epicb_api.model.Character characterDetails) {
         com.epicbattle.epicb_api.model.Character character = characterRepository.findById(id)
@@ -50,7 +46,7 @@ public class CharacterService {
 
         character.setNameCharacter(characterDetails.getNameCharacter());
         character.setCategoryCharacter(characterDetails.getCategoryCharacter());
-        character.setUniversCharacter(characterDetails.getUniversCharacter());
+        character.setUniverseCharacter(characterDetails.getUniverseCharacter());
         character.setHealthCharacter(characterDetails.getHealthCharacter());
         character.setAttackCharacter(characterDetails.getAttackCharacter());
         character.setDefenseCharacter(characterDetails.getDefenseCharacter());
