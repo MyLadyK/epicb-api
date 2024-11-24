@@ -1,122 +1,70 @@
 package com.epicbattle.epicb_api.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table (name = "characters")
+@Table(name = "characters")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Character {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCharacter;
+
+    @NotNull(message = "El nombre no puede ser null")
+    @Size(min = 1, max = 80, message = "El nombre debe tener entre 1 y 80 caracteres")
     private String nameCharacter;
+
+    @Size(min = 1, max = 80, message = "La categoría debe tener entre 1 y 80 caracteres")
     private String categoryCharacter;
-    private String universCharacter;
+
+    @Size(min = 1, max = 100, message = "El universo al que pertenece debe tener entre 1 y 100 caracteres")
+    private String universeCharacter;
+
+    @NotNull(message = "La salud no puede ser null")
+    @Min(value = 1, message = "La salud mínima es 1")
+    @Max(value = 100, message = "La salud máxima es 100")
     private double healthCharacter;
+
+    @NotNull(message = "El ataque no puede ser null")
+    @Min(value = 1, message = "El ataque mínimo es 1")
+    @Max(value = 10, message = "El ataque máximo es 10")
     private double attackCharacter;
+
+    @NotNull(message = "La defensa no puede ser null")
+    @Min(value = 1, message = "La defensa mínima es 1")
+    @Max(value = 10, message = "La defensa máxima es 10")
     private double defenseCharacter;
+
+    @NotNull(message = "La velocidad no puede ser null")
+    @Min(value = 1, message = "La velocidad mínima es 1")
+    @Max(value = 10, message = "La velocidad máxima es 10")
     private double speedCharacter;
+
+    @NotNull(message = "El aguante no puede ser null")
+    @Min(value = 1, message = "El aguante mínimo es 1")
+    @Max(value = 10, message = "El aguante máximo es 10")
     private double staminaCharacter;
+
+    @NotNull(message = "La inteligencia no puede ser null")
+    @Min(value = 1, message = "La inteligencia mínima es 1")
+    @Max(value = 10, message = "La inteligencia máxima es 10")
     private double intelligenceCharacter;
+
+    @NotNull(message = "El especial no puede ser null")
+    @Min(value = 1, message = "El especial mínimo es 1")
+    @Max(value = 5, message = "El especial máximo es 5")
     private double specialCharacter;
+
     private String imageUrl;
-
-
-    //G&S
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public double getSpecialCharacter() {
-        return specialCharacter;
-    }
-
-    public void setSpecialCharacter(double specialCharacter) {
-        this.specialCharacter = specialCharacter;
-    }
-
-    public double getIntelligenceCharacter() {
-        return intelligenceCharacter;
-    }
-
-    public void setIntelligenceCharacter(double intelligenceCharacter) {
-        this.intelligenceCharacter = intelligenceCharacter;
-    }
-
-    public double getStaminaCharacter() {
-        return staminaCharacter;
-    }
-
-    public void setStaminaCharacter(double staminaCharacter) {
-        this.staminaCharacter = staminaCharacter;
-    }
-
-    public double getSpeedCharacter() {
-        return speedCharacter;
-    }
-
-    public void setSpeedCharacter(double speedCharacter) {
-        this.speedCharacter = speedCharacter;
-    }
-
-    public double getDefenseCharacter() {
-        return defenseCharacter;
-    }
-
-    public void setDefenseCharacter(double defenseCharacter) {
-        this.defenseCharacter = defenseCharacter;
-    }
-
-    public double getAttackCharacter() {
-        return attackCharacter;
-    }
-
-    public void setAttackCharacter(double attackCharacter) {
-        this.attackCharacter = attackCharacter;
-    }
-
-    public double getHealthCharacter() {
-        return healthCharacter;
-    }
-
-    public void setHealthCharacter(double healthCharacter) {
-        this.healthCharacter = healthCharacter;
-    }
-
-    public String getUniversCharacter() {
-        return universCharacter;
-    }
-
-    public void setUniversCharacter(String universCharacter) {
-        this.universCharacter = universCharacter;
-    }
-
-    public String getCategoryCharacter() {
-        return categoryCharacter;
-    }
-
-    public void setCategoryCharacter(String categoryCharacter) {
-        this.categoryCharacter = categoryCharacter;
-    }
-
-    public String getNameCharacter() {
-        return nameCharacter;
-    }
-
-    public void setNameCharacter(String nameCharacter) {
-        this.nameCharacter = nameCharacter;
-    }
-
-    public int getIdCharacter() {
-        return idCharacter;
-    }
-
-    public void setIdCharacter(int idCharacter) {
-        this.idCharacter = idCharacter;
-    }
 }
