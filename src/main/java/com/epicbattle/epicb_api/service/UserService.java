@@ -1,5 +1,6 @@
 package com.epicbattle.epicb_api.service;
 
+import com.epicbattle.epicb_api.exception.GlobalExceptionHandler;
 import com.epicbattle.epicb_api.model.User;
 import com.epicbattle.epicb_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,11 @@ public class UserService {
     }
 
     public void deleteUser(int id) {
-        userRepository.deleteById(id);
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new GlobalExceptionHandler.ResourceNotFoundException("Usuario no encontrado con id: " + id);
+        }
     }
 }
 
