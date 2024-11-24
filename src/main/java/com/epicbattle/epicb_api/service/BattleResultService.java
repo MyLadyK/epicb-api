@@ -18,8 +18,7 @@ public class BattleResultService {
     // Get
     public List <BattleResult> getAllBattleResults(){
         return battleResultRepository.findAll();
-
     }
 
-
+    //métodos adicionales que manejen los resultados de las batallas
 }

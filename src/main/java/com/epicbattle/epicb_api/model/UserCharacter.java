@@ -1,43 +1,30 @@
 package com.epicbattle.epicb_api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-
-@Data // G&S, toString, equals y hashCode
-@NoArgsConstructor // Constructor vacío
-@AllArgsConstructor // Constructor completo
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserCharacter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int idUserCharacter;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private User owner;
-    private Character baseCharacter; //personaje base.
 
-    /* Se extrae del personaje base
-    @NotNull(message = "El nombre no puede ser null")
-    @Size(min = 1, max = 50, message = "El nombre debe tener entre 1 y 50 caracteres")
-    private String nameUserCharacter;
-
-    @Size(min = 1, max = 80, message = "La categoría debe tener entre 1 y 80 caracteres")
-    private String categoryUserCharacter;
-
-    @Size(min = 1, max = 100, message = "El universo al que pertenece debe tener entre 1 y 100 caracteres")
-    private String universeUserCharacter;
-
-     */
+    @ManyToOne
+    @JoinColumn(name = "base_character_id")
+    private Character baseCharacter;
 
     @NotNull(message = "La salud no puede ser null")
     @Min(value = 1, message = "La salud mínima es 1")
@@ -45,8 +32,8 @@ public class UserCharacter {
     private double healthUserCharacter;
 
     @NotNull(message = "El ataque no puede ser null")
-    @Min(value = 1, message = "El ataque mínim es 1")
-    @Max(value = 10, message = "El ataque máxim es 10")
+    @Min(value = 1, message = "El ataque mínimo es 1")
+    @Max(value = 10, message = "El ataque máximo es 10")
     private double attackUserCharacter;
 
     @NotNull(message = "La defensa no puede ser null")
@@ -76,5 +63,5 @@ public class UserCharacter {
 
     private String imageUrlUserCharacter;
     private int timesUsed;
-
 }
+

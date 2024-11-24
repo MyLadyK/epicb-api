@@ -11,17 +11,15 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-@Entity //Esta clase es una entidad en la base de datos
-@Table(name = "users") //Cambia el nombre de la tabla a users, porque user es una palabra reservada en H2
-
-@Data // G&S, toString, equals y hashCode
-@NoArgsConstructor // Constructor vacío
-@AllArgsConstructor // Constructor completo
+@Entity
+@Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
-    @Id //Clave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Genera ID automáticamente.
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
 
     @NotNull(message = "El nombre no puede estar en blanco")
@@ -40,16 +38,16 @@ public class User {
     private Timestamp lastEnergyRefill;
     private int pointsUser;
 
-    @OneToMany // Relación de uno a muchos con UserCharacter
-    private List <UserCharacter> character;
+    @OneToMany(mappedBy = "user")
+    private List<UserCharacter> character;
 
-    @OneToMany // Relación de uno a muchos con Message enviado
-    private List <Message> messageSent;
+    @OneToMany(mappedBy = "user")
+    private List<Message> messageSent;
 
-    @OneToMany // Relación de uno a muchos con Message recibido
-    private List <Message> messageReceived;
+    @OneToMany(mappedBy = "user")
+    private List<Message> messageReceived;
 
-    @OneToMany // Relación de uno a muchos con BattleResult
-    private List <BattleResult> battleResult;
-
+    @OneToMany(mappedBy = "winner")
+    private List<BattleResult> battleResult;
 }
+

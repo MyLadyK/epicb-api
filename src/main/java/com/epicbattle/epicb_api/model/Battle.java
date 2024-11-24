@@ -20,4 +20,6 @@ public class Battle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int idBattle;
+
+    //Añadir relaciones con usuarios y/o personajes
 }

@@ -16,20 +16,20 @@ public class AdminService {
     public AdminService (AdminRepository adminRepository, UserRepository userRepository){
         this.adminRepository = adminRepository;
         this.userRepository = userRepository;
-
     }
 
     // Get
     public List <User> getAllUsers(){
+
         return userRepository.findAll();
     }
 
     public void bannUser(User usuario, int days) {
-
+        //Desarrollar lógica
     }
 
     public void eliminateUser(User usuario) {
-
+        //Desarrollar lógica
     }
 }
 
