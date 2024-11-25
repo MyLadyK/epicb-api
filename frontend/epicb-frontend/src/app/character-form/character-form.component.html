@@ -1,0 +1,20 @@
+<form (ngSubmit)="addCharacter()">
+  <div>
+    <label for="nameCharacter">Nombre</label>
+    <input type="text" id="nameCharacter" [(ngModel)]="character.nameCharacter" name="nameCharacter" required>
+  </div>
+  <div>
+    <label for="healthCharacter">Salud</label>
+    <input type="number" id="healthCharacter" [(ngModel)]="character.healthCharacter" name="healthCharacter" required>
+  </div>
+  <div>
+    <label for="attackCharacter">Ataque</label>
+    <input type="number" id="attackCharacter" [(ngModel)]="character.attackCharacter" name="attackCharacter" required>
+  </div>
+  <!-- Añadir más campos según sea necesario -->
+  <div>
+    <label for="imageUrl">URL de Imagen</label>
+    <input type="text" id="imageUrl" [(ngModel)]="character.imageUrl" name="imageUrl" required>
+  </div>
+  <button type="submit">Añadir Personaje</button>
+</form>
