@@ -1,15 +1,32 @@
-<!-- app.component.html -->
+<nav>
+
+  <ul>
+    <p></p>
+    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/rankings">Rankings</a></li>
+    <li><a routerLink="/sign-up">Sign Up</a></li>
+    <li><a routerLink="/terms">Términos y Condiciones</a></li>
+    <li><a routerLink="/about">About Us</a></li>
+  </ul>
+
+</nav>
+
 <main class="main">
-  <div class="content">
-    <div class="left-side">
+  <div class="background">
+    <div class="login-form">
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
-      <a routerLink="/">Inicio</a>
-      <a routerLink="/add-character">Añadir Personaje</a>
-      <a routerLink="/battle">Batalla</a>
+      <form (ngSubmit)="login()">
+        <div>
+          <label for="mailUser">Correo</label>
+          <input type="text" id="mailUser" [(ngModel)]="mailUser" name="mailUser" required>
+        </div>
+        <div>
+          <label for="passwordHash">Contraseña</label>
+          <input type="password" id="passwordHash" [(ngModel)]="passwordHash" name="passwordHash" required>
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
     </div>
   </div>
 </main>
