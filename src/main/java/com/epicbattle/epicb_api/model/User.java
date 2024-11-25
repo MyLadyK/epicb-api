@@ -13,6 +13,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,7 +40,7 @@ public class User {
     private Timestamp lastEnergyRefill;
     private int pointsUser;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "owner")
     private List<UserCharacter> character;
 
     @OneToMany(mappedBy = "user")
