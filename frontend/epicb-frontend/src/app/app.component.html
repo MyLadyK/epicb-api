@@ -7,23 +7,9 @@
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
-      <!-- Remover la instancia duplicada de <app-battle> -->
-      <!-- <app-battle></app-battle> -->
-    </div>
-  </div>
-</main>
-
-<!-- app.component.html -->
-<main class="main">
-  <div class="content">
-    <div class="left-side">
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
+      <a routerLink="/">Inicio</a>
       <a routerLink="/add-character">Añadir Personaje</a>
-      <!-- <app-battle></app-battle> --> <!-- Comentado ya que router-outlet manejará los componentes -->
+      <a routerLink="/battle">Batalla</a>
     </div>
   </div>
 </main>

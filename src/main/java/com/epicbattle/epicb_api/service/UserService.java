@@ -33,5 +33,9 @@ public class UserService {
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
+
+    public User authenticateUser(String mailUser, String passwordHash) {
+        return userRepository.findByMailUserAndPasswordHash(mailUser, passwordHash);
+    }
 }
 

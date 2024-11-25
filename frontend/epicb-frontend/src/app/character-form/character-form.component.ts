@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +14,10 @@ import { Character } from '../model/character';
   providers: [CharacterService]
 })
 export class CharacterFormComponent {
+  @Output() characterAdded = new EventEmitter<void>();
+
   character: Character = {
+    idCharacter: 0, // Añadir un valor inicial para idCharacter
     nameCharacter: '',
     healthCharacter: 0,
     attackCharacter: 0,
@@ -34,6 +37,7 @@ export class CharacterFormComponent {
     this.characterService.addCharacter(this.character).subscribe(
       response => {
         console.log('Personaje añadido', response);
+        this.characterAdded.emit();
         // Puedes añadir una lógica para resetear el formulario o mostrar un mensaje de éxito
       },
       error => {
