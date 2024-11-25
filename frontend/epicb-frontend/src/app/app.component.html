@@ -1,21 +1,18 @@
 <nav>
-
   <ul>
-    <p></p>
     <li><a routerLink="/">Inicio</a></li>
     <li><a routerLink="/rankings">Rankings</a></li>
     <li><a routerLink="/sign-up">Sign Up</a></li>
     <li><a routerLink="/terms">Términos y Condiciones</a></li>
     <li><a routerLink="/about">About Us</a></li>
   </ul>
-
 </nav>
 
 <main class="main">
   <div class="background">
     <div class="login-form">
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <h1>Hello General</h1>
+      <p>Your troops awaits you 🎉</p>
       <form (ngSubmit)="login()">
         <div>
           <label for="mailUser">Correo</label>
@@ -32,3 +29,12 @@
 </main>
 
 <router-outlet></router-outlet>
+
+<footer>
+  <div class="social-icons">
+    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+    <a href="https://www.twitter.com" target="_blank">Twitter</a>
+    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+  </div>
+  <p>&copy; 2024 KuroKami. Todos los derechos reservados.</p>
+</footer>
